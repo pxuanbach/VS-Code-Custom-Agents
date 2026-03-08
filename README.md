@@ -4,6 +4,8 @@ This repository contains a collection of custom agents designed to enhance the f
 
 ## Agents Pipeline
 
+Inpired by [Getting AI to Work in Complex Codebases](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md) document, I have designed a pipeline of agents corresponding to "Frequent Intentional Compaction" technique.
+
 Currently, the main workflow is as follows:
 1. **[Project Research](./agents/ProjectResearch.agent.md)**: This agent is responsible for thoroughly investigating and understanding the codebase
 2. **[Planning](./agents/Planner.agent.md)**: This agent creates detailed, actionable plans based on the research findings.
