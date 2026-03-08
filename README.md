@@ -10,6 +10,7 @@ Currently, the main workflow is as follows:
 1. **[Project Research](./agents/ProjectResearch.agent.md)**: This agent is responsible for thoroughly investigating and understanding the codebase
 2. **[Planning](./agents/Planner.agent.md)**: This agent creates detailed, actionable plans based on the research findings.
 3. **[Implementation](./agents/Code.agent.md)**: This agent executes the implementation based on the plan created.
+4. **[Update Research Files](./agents/UpdateDocument.agent.md)**: After implementation, this agent updates the relevant research files to reflect the changes made in the codebase.
 
 Leveraging the handoff features to get the workflow seamless, each agent is designed to pass the necessary context and information to the next agent in the workflow, ensuring a smooth transition from research to planning and finally to implementation.
 
