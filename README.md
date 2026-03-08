@@ -21,5 +21,5 @@ Leveraging the handoff features to get the workflow seamless, each agent is desi
 Currently, I do not know how to create a orchestrator that can manage the workflow and handoffs between agents. Therefore, the workflow is not fully automated, and users will need to manually trigger each agent in sequence. However, i think VS Code will update that feature in the future.
 
 ## References:
-- The Project Research agent is Project Research agent in Roo Code, I just add <xml> tags and handoffs to fit my workflow.
-- The Planner agent is Plan agent in VS Code, I just modify the document directory and handoffs to fit my workflow.
+- The Project Research agent is Project Research agent that I copied from [@StochasticGhost](https://x.com/StochasticGhost/status/1908839293294174321), I just add <xml> tags and handoffs to fit my workflow.
+- The Planner agent is Plan agent in [VS Code Plan Agent](https://code.visualstudio.com/docs/copilot/agents/planning), I just modify the document directory and handoffs to fit my workflow.
