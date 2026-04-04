@@ -7,15 +7,17 @@ This repository contains a collection of custom agents designed to enhance the f
 Inpired by [Getting AI to Work in Complex Codebases](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md) document, I have designed a pipeline of agents corresponding to "Frequent Intentional Compaction" technique.
 
 Currently, the main workflow is as follows:
-1. **[Project Research](./agents/ProjectResearch.agent.md)**: This agent is responsible for thoroughly investigating and understanding the codebase
+1. **Researcher**: This phase involves gathering information and understanding the codebase. It includes:
+- **[Project Researcher](./agents/ProjectResearcher.agent.md)**: This agent is responsible for thoroughly investigating and understanding the codebase
+- **[Technical Researcher](./agents/TechnicalResearcher.agent.md)**: This agent is responsible for evaluating the feasibility of features and producing evidence-backed technical recommendations.
 2. **[Planning](./agents/Planner.agent.md)**: This agent creates detailed, actionable plans based on the research findings.
-3. **[Implementation](./agents/Code.agent.md)**: This agent executes the implementation based on the plan created.
-4. **[Update Research Files](./agents/UpdateDocument.agent.md)**: After implementation, this agent updates the relevant research files to reflect the changes made in the codebase.
+3. **[Implementation](./agents/Developer.agent.md)**: This agent executes the implementation based on the plan created.
+4. **[Update Research Files](./agents/DocumentUpdater.agent.md)**: After implementation, this agent updates the relevant research files to reflect the changes made in the codebase.
 
 Leveraging the handoff features to get the workflow seamless, each agent is designed to pass the necessary context and information to the next agent in the workflow, ensuring a smooth transition from research to planning and finally to implementation.
 
 ## Notes
-- Do I need to use specific skills? Yes, providing specific skills can help the agents perform their tasks more effectively. For example, the Code agent can utilize skills related to code generation, refactoring, and testing to enhance its capabilities.
+- Do I need to use specific skills? Yes, providing specific skills can help the agents perform their tasks more effectively. For example, the Developer agent can utilize skills related to code generation, refactoring, and testing to enhance its capabilities.
 - The tools may differ from your VS Code tools, so you may need to adjust the tools used by each agent based on your specific setup and requirements.
 - The models used in the handoffs are based on the latest available versions at the time of writing. You may want to update them to the latest versions or choose different models based on your preferences and needs.
 
@@ -24,5 +26,5 @@ Leveraging the handoff features to get the workflow seamless, each agent is desi
 Currently, I do not know how to create a orchestrator that can manage the workflow and handoffs between agents. Therefore, the workflow is not fully automated, and users will need to manually trigger each agent in sequence. However, i think VS Code will update that feature in the future.
 
 ## References:
-- The Project Research agent is Project Research agent that I copied from [@StochasticGhost](https://x.com/StochasticGhost/status/1908839293294174321), I just add <xml> tags and handoffs to fit my workflow.
+- The Project Researcher agent is Project Researcher agent that I copied from [@StochasticGhost](https://x.com/StochasticGhost/status/1908839293294174321), I just add <xml> tags and handoffs to fit my workflow.
 - The Planner agent is Plan agent in [VS Code Plan Agent](https://code.visualstudio.com/docs/copilot/agents/planning), I just modify the document directory and handoffs to fit my workflow.
