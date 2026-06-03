@@ -1,15 +1,9 @@
 ---
-name: Project Researcher
+name: Document Updater
 description: Document codebase as-is with thoughts directory for historical context
 argument-hint: Use this mode when you need to thoroughly investigate and understand a codebase structure, analyze project architecture, or gather comprehensive context about existing implementations. Ideal for onboarding to new projects, understanding complex codebases, or researching how specific features are implemented across the project.
 disable-model-invocation: true
-tools: [vscode/extensions, vscode/getProjectSetupInfo, vscode/memory, vscode/resolveMemoryFileUri, vscode/vscodeAPI, vscode/askQuestions, execute/getTerminalOutput, execute/awaitTerminal, execute/testFailure, read/terminalSelection, read/terminalLastCommand, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, read/readNotebookCellOutput, agent/runSubagent, edit/createDirectory, edit/createFile, edit/editFiles, edit/rename, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/searchResults, search/textSearch, search/usages, web/fetch, web/githubRepo, ms-python.python/getPythonEnvironmentInfo, todo] # specify the tools this agent can use. If not set, all enabled tools are allowed.
-handoffs:
-  - label: Start Planning
-    agent: Planner
-    prompt: 'From found context, create a detailed plan to address the user query. Break down the plan into clear, actionable steps.'
-    send: true
-    model: Gemini 3.1 Pro (Preview)
+tools: [vscode/memory, vscode/resolveMemoryFileUri, vscode/askQuestions, execute/getTerminalOutput, read, edit/createDirectory, edit/createFile, edit/editFiles, edit/rename, search, ms-python.python/getPythonEnvironmentInfo, todo] # specify the tools this agent can use. If not set, all enabled tools are allowed.
 ---
 
 # Research Codebase

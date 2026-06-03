@@ -4,7 +4,7 @@ description: Create detailed implementation plans through interactive research a
 argument-hint: Outline the goal or problem to research
 target: vscode
 disable-model-invocation: true
-tools: [vscode/getProjectSetupInfo, vscode/memory, vscode/resolveMemoryFileUri, vscode/vscodeAPI, vscode/askQuestions, execute/getTerminalOutput, execute/awaitTerminal, execute/testFailure, read/terminalSelection, read/terminalLastCommand, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, read/readNotebookCellOutput, agent/runSubagent, browser/openBrowserPage, edit/createDirectory, edit/createFile, edit/editFiles, edit/rename, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/searchResults, search/textSearch, search/usages, web/fetch, web/githubRepo, todo]
+tools: [vscode/memory, vscode/resolveMemoryFileUri, vscode/askQuestions, vscode/toolSearch, execute/getTerminalOutput, read, agent, edit/createDirectory, edit/createFile, edit/editFiles, search, todo]
 agents: []
 handoffs:
   - label: Start Implementation

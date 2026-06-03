@@ -3,13 +3,12 @@ name: Developer
 description: Write, modify, and refactor code
 argument-hint: Write, modify, and refactor code
 disable-model-invocation: true
-tools: [vscode/extensions, vscode/getProjectSetupInfo, vscode/installExtension, vscode/memory, vscode/newWorkspace, vscode/resolveMemoryFileUri, vscode/runCommand, vscode/vscodeAPI, vscode/askQuestions, execute/getTerminalOutput, execute/awaitTerminal, execute/killTerminal, execute/createAndRunTask, execute/runInTerminal, execute/runNotebookCell, execute/testFailure, read/terminalSelection, read/terminalLastCommand, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, read/readNotebookCellOutput, agent/runSubagent, edit/createDirectory, edit/createFile, edit/createJupyterNotebook, edit/editFiles, edit/editNotebook, edit/rename, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/searchResults, search/textSearch, search/usages, web/fetch, web/githubRepo, ms-toolsai.jupyter/configureNotebook, ms-toolsai.jupyter/listNotebookPackages, ms-toolsai.jupyter/installNotebookPackages, ms-python.python/getPythonEnvironmentInfo, ms-python.python/getPythonExecutableCommand, ms-python.python/installPythonPackage, ms-python.python/configurePythonEnvironment, todo] # specify the tools this agent can use. If not set, all enabled tools are allowed.
+tools: [vscode, execute, agent, edit, search, todo] # specify the tools this agent can use. If not set, all enabled tools are allowed.
 handoffs:
-  - label: Update Research Files
-    agent: Update Document
-    prompt: 'Based on the changes, update related research files like *.research.md (in .github/research dir) to reflect the new architecture and dependencies. Ensure that the research files are up-to-date with the latest code changes.'
+  - label: Review Code
+    agent: Reviewer
+    prompt: 'Based on the code changes, review the implementation for quality and correctness. Provide specific feedback on any issues found or approve if the implementation looks good.'
     send: true
-    model: GPT-5 mini
 ---
 
 # Implement Plan

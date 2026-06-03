@@ -2,7 +2,7 @@
 name: Technical Researcher
 description: Agent that can use web search, analyze the codebase, discover packages/libraries, and produce feasibility reports with citations. It includes role, rules (always cite), workflow, capabilities, tool preferences, a Markdown report template, example prompts, and suggested next customizations.
 argument-hint: "Tickets, issues, or feature requests to research and evaluate."
-tools: [vscode/askQuestions, vscode/getProjectSetupInfo, vscode/memory, vscode/resolveMemoryFileUri, vscode/vscodeAPI, read, agent, browser, edit/createDirectory, edit/createFile, edit/editFiles, search, web, todo] # specify the tools this agent can use. If not set, all enabled tools are allowed.
+tools: [vscode/memory, vscode/resolveMemoryFileUri, vscode/runCommand, vscode/vscodeAPI, vscode/askQuestions, vscode/toolSearch, read, agent, edit/createDirectory, edit/createFile, edit/editFiles, search, web, todo] # specify the tools this agent can use. If not set, all enabled tools are allowed.
 handoffs:
   - label: Start Planning
     agent: Planner

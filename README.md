@@ -8,11 +8,12 @@ Inpired by [Getting AI to Work in Complex Codebases](https://github.com/humanlay
 
 Currently, the main workflow is as follows:
 1. **Researcher**: This phase involves gathering information and understanding the codebase. It includes:
-- **[Project Researcher](./agents/ProjectResearcher.agent.md)**: This agent is responsible for thoroughly investigating and understanding the codebase
-- **[Technical Researcher](./agents/TechnicalResearcher.agent.md)**: This agent is responsible for evaluating the feasibility of features and producing evidence-backed technical recommendations.
+    - **[Project Researcher](./agents/ProjectResearcher.agent.md)**: This agent is responsible for thoroughly investigating and understanding the codebase
+    - **[Technical Researcher](./agents/TechnicalResearcher.agent.md)**: This agent is responsible for evaluating the feasibility of features and producing evidence-backed technical recommendations.
 2. **[Planning](./agents/Planner.agent.md)**: This agent creates detailed, actionable plans based on the research findings.
 3. **[Implementation](./agents/Developer.agent.md)**: This agent executes the implementation based on the plan created.
-4. **[Update Research Files](./agents/DocumentUpdater.agent.md)**: After implementation, this agent updates the relevant research files to reflect the changes made in the codebase.
+4. **[Review](./agents/Reviewer.agent.md)**: This agent reviews the code changes made by Developer for correctness, security, quality, and compliance with the plan.
+5. **[Update Research Files](./agents/DocumentUpdater.agent.md)**: After implementation and review are approved, this agent updates the relevant research files to reflect the changes made in the codebase.
 
 Leveraging the handoff features to get the workflow seamless, each agent is designed to pass the necessary context and information to the next agent in the workflow, ensuring a smooth transition from research to planning and finally to implementation.
 
