@@ -7,15 +7,24 @@
     |
     v
 [ANALYZE] --> Requirement Agent
+    |                   |
+    |                   v
+    |            [DOC] --> Material Writer (PRD)
     |
     v
 need_architecture? --yes--> [DESIGN] --> Architecture Agent
+    |                             |
+    |                             v
+    |                      [DOC] --> Material Writer (Architecture)
     |
     no
     |
     v
 [PLAN] --> Task Planner Agent
-    |
+              |
+              v
+        [DOC] --> Material Writer (Implementation Plan)
+
     v
 [IMPLEMENT] --> Coding Agent (1 task at a time)
     |
@@ -35,6 +44,9 @@ Agent        |
     |         |
     |         v
     |    [VALIDATE] --> Validation Agent
+    |         |           |
+    |         |           v
+    |         |    [DOC] --> Material Writer (Validation Report)
     |         |
     |    failed  | passed
     |         v
@@ -57,6 +69,7 @@ Agent        |
 | Review        | Reviews code quality           | Task + modified files + DoD  | LGTM or issue list (severity)   | `read`, `search`         | Review code, check quality         |
 | Testing       | Generates tests                | Feature + affected modules   | Test files + coverage summary   | `read`, `search`, `create_file`, `edit` | Write tests, generate tests   |
 | Validation    | Runs build/test validation     | Project path                 | Pass/fail status per pipeline   | `read`, `search`, `execute` | Validate, build, lint, test       |
+| Material Writer | Writes documentation          | Structured output from other agents | Markdown documents (PRD, architecture, plans, reports) | `read`, `edit`, `search`, `create_file` | Write doc, create PRD, draft document |
 
 ## State Transitions
 
@@ -94,4 +107,20 @@ START -> ANALYZE -> PLAN -> IMPLEMENT -> REVIEW -> NEXT_TASK
 ## LGTM | Review Failed
 **Task**: [task ID]
 **Issues Found**: [count by severity]
+```
+
+### Agents -> Material Writer
+
+```
+**Task**: Write [document type]
+**Content**: [structured output from the agent]
+**Output Path**: [path/to/docs/YYYY-MM-DD-[type]-[name].md]
+```
+
+### Material Writer -> Orchestrator
+
+```
+## Documentation Complete
+**Document**: [document type]
+**Path**: [saved file path]
 ```
