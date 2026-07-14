@@ -116,49 +116,28 @@ Agent        |
 
 ## Installation
 
-You can install these agents into any project using the provided installer scripts.
+Download the installer script to your target repository, then run it. The script automatically clones agents and skills from this repository into your `.github` directory.
 
 ### Windows (PowerShell)
 
 ```powershell
-# Install all (agents + agents.minimal + skills)
-.\install-agents.ps1 -RepoUrl "https://github.com/your-username/vs-code-custom-agents.git"
+# 1. Download the installer script
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/pxuanbach/VS-Code-Custom-Agents/main/install-agents.ps1" -OutFile "install-agents.ps1"
 
-# Install agents only
-.\install-agents.ps1 -RepoUrl "https://github.com/your-username/vs-code-custom-agents.git" -AgentsOnly
-
-# Install skills only
-.\install-agents.ps1 -RepoUrl "https://github.com/your-username/vs-code-custom-agents.git" -SkillsOnly
-
-# Specify target directory and branch
-.\install-agents.ps1 -RepoUrl "https://github.com/user/repo.git" -TargetDir ".github" -Branch "main"
+# 2. Run installation (no parameters needed - source repo is hardcoded)
+.\install-agents.ps1
 ```
 
 ### Linux/macOS (Bash)
 
 ```bash
-# Install all (agents + agents.minimal + skills)
-./install-agents.sh --repo "https://github.com/your-username/vs-code-custom-agents.git"
+# 1. Download the installer script
+curl -O https://raw.githubusercontent.com/pxuanbach/VS-Code-Custom-Agents/main/install-agents.sh
 
-# Install agents only
-./install-agents.sh --repo "https://github.com/your-username/vs-code-custom-agents.git" --agents-only
-
-# Install skills only
-./install-agents.sh --repo "https://github.com/your-username/vs-code-custom-agents.git" --skills-only
-
-# Specify target directory and branch
-./install-agents.sh --repo "https://github.com/user/repo.git" --target ".github" --branch "main"
+# 2. Run installation (no parameters needed - source repo is hardcoded)
+chmod +x install-agents.sh
+./install-agents.sh
 ```
-
-### Parameters
-
-| Parameter      | Description                          | Default    |
-|---------------|--------------------------------------|------------|
-| `--repo` / `-RepoUrl` | Git repository URL (required)    | -          |
-| `--target` / `-TargetDir` | Installation directory        | `.github`  |
-| `--branch` / `-Branch`   | Git branch to clone           | `main`     |
-| `--agents-only` / `-AgentsOnly` | Install only agents         | `false`    |
-| `--skills-only` / `-SkillsOnly` | Install only skills         | `false`    |
 
 ### What Gets Installed
 

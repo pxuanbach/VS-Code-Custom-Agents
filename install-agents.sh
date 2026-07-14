@@ -1,69 +1,32 @@
 #!/bin/bash
 # =========================================================
 # VS Code Custom Agents Installer
-# Install agents from git cloud to any project
+# Install agents and skills from source repository
+# Source: https://github.com/pxuanbach/VS-Code-Custom-Agents
 # =========================================================
 # Usage:
-#   ./install-agents.sh --repo "https://github.com/user/repo.git" --target ".github"
-#   ./install-agents.sh --repo "https://github.com/user/repo.git" --agents-only
-#   ./install-agents.sh --repo "https://github.com/user/repo.git" --skills-only
+#   ./install-agents.sh
 # =========================================================
 
 set -e
 
-# Default values
+# Source repository (hardcoded - this repo)
+SOURCE_REPO="https://github.com/pxuanbach/VS-Code-Custom-Agents.git"
+SOURCE_BRANCH="main"
+
+# Target directory (current directory's .github)
 TARGET_DIR=".github"
-BRANCH="main"
-AGENTS_ONLY=false
-SKILLS_ONLY=false
-
-# Parse arguments
-while [[ $# -gt 0 ]]; do
-    case $1 in
-        --repo)
-            REPO_URL="$2"
-            shift 2
-            ;;
-        --target)
-            TARGET_DIR="$2"
-            shift 2
-            ;;
-        --branch)
-            BRANCH="$2"
-            shift 2
-            ;;
-        --agents-only)
-            AGENTS_ONLY=true
-            shift
-            ;;
-        --skills-only)
-            SKILLS_ONLY=true
-            shift
-            ;;
-        *)
-            echo "Unknown option: $1"
-            exit 1
-            ;;
-    esac
-done
-
-# Validate required parameters
-if [ -z "$REPO_URL" ]; then
-    echo "Error: --repo is required"
-    echo "Usage: $0 --repo <git-url> [--target <dir>] [--branch <branch>] [--agents-only] [--skills-only]"
-    exit 1
-fi
 
 # Create temp directory for cloning
 TEMP_DIR=$(mktemp -d)
 TEMP_DIR="$TEMP_DIR/vscode-agents-temp-$$"
 
-echo "📥 Cloning repository..."
-echo "   URL: $REPO_URL"
-echo "   Branch: $BRANCH"
+echo "📥 Cloning agents repository..."
+echo "   URL: $SOURCE_REPO"
+echo "   Branch: $SOURCE_BRANCH"
 
 # Clone into temp directory (shallow clone for speed)
-git clone --depth 1 --branch "$BRANCH" "$REPO_URL" "$TEMP_DIR"
+git clone --depth 1 --branch "$SOURCE_BRANCH" "$SOURCE_REPO" "$TEMP_DIR"
 
 if [ $? -ne 0 ]; then
     echo "❌ Git clone failed"
@@ -144,21 +107,14 @@ install_skills() {
     echo "✅ Skills installed!"
 }
 
-# Run installations based on flags
-if [ "$AGENTS_ONLY" = true ]; then
-    install_agents
-    install_agents_minimal
-elif [ "$SKILLS_ONLY" = true ]; then
-    install_skills
-else
-    install_agents
-    install_agents_minimal
-    install_skills
-fi
+# Install all (agents, agents.minimal, skills)
+install_agents
+install_agents_minimal
+install_skills
 
 echo ""
 echo "🎉 Installation complete!"
-echo "   Agents: $TARGET_DIR/agents"
+echo "   Target: $TARGET_DIR"
 
 # Cleanup temp directory
 rm -rf "$TEMP_DIR"
