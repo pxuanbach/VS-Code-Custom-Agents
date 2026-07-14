@@ -114,6 +114,60 @@ Agent        |
 - The tools may differ from your VS Code tools, so you may need to adjust the tools used by each agent based on your specific setup and requirements.
 - The models used in the handoffs are based on the latest available versions at the time of writing. You may want to update them to the latest versions or choose different models based on your preferences and needs.
 
+## Installation
+
+You can install these agents into any project using the provided installer scripts.
+
+### Windows (PowerShell)
+
+```powershell
+# Install all (agents + agents.minimal + skills)
+.\install-agents.ps1 -RepoUrl "https://github.com/your-username/vs-code-custom-agents.git"
+
+# Install agents only
+.\install-agents.ps1 -RepoUrl "https://github.com/your-username/vs-code-custom-agents.git" -AgentsOnly
+
+# Install skills only
+.\install-agents.ps1 -RepoUrl "https://github.com/your-username/vs-code-custom-agents.git" -SkillsOnly
+
+# Specify target directory and branch
+.\install-agents.ps1 -RepoUrl "https://github.com/user/repo.git" -TargetDir ".github" -Branch "main"
+```
+
+### Linux/macOS (Bash)
+
+```bash
+# Install all (agents + agents.minimal + skills)
+./install-agents.sh --repo "https://github.com/your-username/vs-code-custom-agents.git"
+
+# Install agents only
+./install-agents.sh --repo "https://github.com/your-username/vs-code-custom-agents.git" --agents-only
+
+# Install skills only
+./install-agents.sh --repo "https://github.com/your-username/vs-code-custom-agents.git" --skills-only
+
+# Specify target directory and branch
+./install-agents.sh --repo "https://github.com/user/repo.git" --target ".github" --branch "main"
+```
+
+### Parameters
+
+| Parameter      | Description                          | Default    |
+|---------------|--------------------------------------|------------|
+| `--repo` / `-RepoUrl` | Git repository URL (required)    | -          |
+| `--target` / `-TargetDir` | Installation directory        | `.github`  |
+| `--branch` / `-Branch`   | Git branch to clone           | `main`     |
+| `--agents-only` / `-AgentsOnly` | Install only agents         | `false`    |
+| `--skills-only` / `-SkillsOnly` | Install only skills         | `false`    |
+
+### What Gets Installed
+
+- **`agents/`** - Full agent definitions with skills
+- **`agents.minimal/`** - Lightweight agent configurations
+- **`skills/`** - Reusable skill definitions for agents
+
+Existing agents are backed up automatically before replacement.
+
 ## References
 
 - The architecture design follows the [Multi-Agent Development Workflow](./.github/agents/artifacts/ARCHITECTURE.md) pattern.
